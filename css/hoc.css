@@ -1,0 +1,74 @@
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+body {
+	background-color: black;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: white;
+}
+
+main {
+	width: 1048px;
+	margin: 0 auto;
+}
+
+main header .ll_logo {
+	background-image: url("http://lighthouselabs.ca/assets/lhl-logo@2x.png");
+	background-size: 220px auto;
+	width: 220px;
+	height: 46px;
+	float: left;
+	margin: 20px 0;
+	border: 0;
+	text-decoration: none;
+}
+
+main header .cc_logo {
+	display: inline-block;
+	float: right;
+	margin-right: 24px;
+}
+
+#controls {
+	background: transparent url(../images/controls-label.png) top left no-repeat;
+	padding-left: 100px;
+	margin-top: 20px;
+	float: left;
+}
+
+#controls .arrow {
+	padding-left: 15px;
+}
+
+#controls .left {
+	background: transparent url(../images/left-label.png) top left no-repeat;
+}
+
+#controls .right {
+	background: transparent url(../images/right-label.png) top left no-repeat;
+}
+
+#controls .up {
+	background: transparent url(../images/up-label.png) top left no-repeat;
+}
+
+#controls .space {
+	background: transparent url(../images/space-label.png) top left no-repeat;
+	padding-left: 68px;
+}
+
+#phaser_logo {
+	width: 168px;
+	height: 164px;
+	background: transparent url(../images/phaser-logo.png) bottom left no-repeat;
+	float: right;
+	margin: 20px 24px 0 0;
+}
+
+.green {
+	color: #9bc805;
+}
