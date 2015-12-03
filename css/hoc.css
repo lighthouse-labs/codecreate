@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'Montserrat';
+    src: url('fonts/Montserrat-Regular.tff') format('truetype');
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -6,8 +11,9 @@
 
 body {
 	background-color: black;
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 14px;
+	font-family: Montserrat, Arial, Helvetica, sans-serif;
+	font-size: 16px;
+    line-height: 1.7em;
 	color: white;
 }
 
@@ -22,7 +28,7 @@ main header .ll_logo {
 	width: 220px;
 	height: 46px;
 	float: left;
-	margin: 20px 0;
+	margin: 10px 0;
 	border: 0;
 	text-decoration: none;
 }
@@ -33,42 +39,80 @@ main header .cc_logo {
 	margin-right: 24px;
 }
 
-#controls {
-	background: transparent url(../images/controls-label.png) top left no-repeat;
-	padding-left: 100px;
-	margin-top: 20px;
-	float: left;
+.brand-primary {
+	color: #5AC5C5;
 }
 
-#controls .arrow {
-	padding-left: 15px;
+.brand-orange {
+    color: #FFD200;
 }
 
-#controls .left {
-	background: transparent url(../images/left-label.png) top left no-repeat;
+.header {
+    display: inline-block;
+    width: 100%;
+    margin: 1.5em 0;
 }
 
-#controls .right {
-	background: transparent url(../images/right-label.png) top left no-repeat;
+@media (max-width: 1070px) {
+    .main-container {
+        padding: 0 15px;
+    }
 }
 
-#controls .up {
-	background: transparent url(../images/up-label.png) top left no-repeat;
+.instructions {
+    margin: 1.5em 0;
+    margin-bottom: 3em;
 }
 
-#controls .space {
-	background: transparent url(../images/space-label.png) top left no-repeat;
-	padding-left: 68px;
+.controls, .phaser-logo {
+    display: inline-block;
+    padding: 0 15px;
 }
 
-#phaser_logo {
-	width: 168px;
-	height: 164px;
-	background: transparent url(../images/phaser-logo.png) bottom left no-repeat;
-	float: right;
-	margin: 20px 24px 0 0;
+.controls {
+    width: 60%;
 }
 
-.green {
-	color: #9bc805;
+.phaser-container {
+    width: 10em;
+    float: right;
+    margin-right: 30px;
+}
+
+.phaser-label {
+    font-weight: bold;
+    font-style: italic;
+}
+
+.phaser-logo {
+    margin-top: 0.8em;
+    width: 8.5em;
+}
+
+.controls-label {
+    display: inline-block;
+    width: 15%;
+    vertical-align: top;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.controls-content {
+    display: inline-block;
+    width: 75%;
+    padding-left: 15px;
+}
+
+.controls-icon {
+    margin-right: 0.4em;
+}
+
+.controls-icon--space {
+    margin-top: 0.25em;
+}
+
+.divider {
+    border-top: 1px solid white;
+    margin: 1.5em 15px;
+    margin-right: 40px;
 }

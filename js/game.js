@@ -166,8 +166,8 @@ var map, layer, cursors, originalSettings,
 				methods.setupText();
 			},
 			setupText: function() {
-				elements.scoreText = game.add.text(10, 575, elements.scoreString + elements.score, { font: '34px Arial', fill: '#fff' });
-				elements.levelText = game.add.text(250, 575, elements.levelString + elements.level, { font: '34px Arial', fill: '#fff' });
+				elements.scoreText = game.add.text(15, 600, elements.scoreString + elements.score, { font: '25px Arial', fill: '#fff' });
+				elements.levelText = game.add.text(250, 600, elements.levelString + elements.level, { font: '25px Arial', fill: '#fff' });
 				elements.scoreText.fixedToCamera = true;
 				elements.levelText.fixedToCamera = true;
 			},
