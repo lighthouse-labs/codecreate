@@ -1,6 +1,6 @@
 var settings = {
   //This is how many enemies we will have. Max is 12. Default is 6.
-  number_of_enemies: 1,
+  number_of_enemies: 6,
   
   //This is how fast YOUR ship can fire. A lower number means more bullets!
   fire_speed: 40,
