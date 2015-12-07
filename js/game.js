@@ -84,7 +84,7 @@ var map, layer, cursors, originalSettings,
 						projectiles.bullet.reset(elements.player.body.x + 2, elements.player.body.y + 4);
 						projectiles.bullet.lifespan = 2000;
 						projectiles.bullet.rotation = elements.player.rotation;
-						game.physics.arcade.velocityFromRotation(elements.player.rotation, 400, projectiles.bullet.body.velocity);
+						game.physics.arcade.velocityFromRotation(elements.player.rotation, settings.bullet_speed, projectiles.bullet.body.velocity);
 						projectiles.bulletTime = game.time.now + settings.fire_speed;
 					}
 				}
@@ -181,17 +181,16 @@ var map, layer, cursors, originalSettings,
 				elements.player.body.velocity.y = 0;
 				elements.player.body.angularVelocity = 0;
 				if (cursors.left.isDown) {
-						elements.player.body.angularVelocity = -200;
-				} else {
-					if (cursors.right.isDown) {
-						elements.player.body.angularVelocity = 200;
-					}
-					if (cursors.up.isDown) {
-							game.physics.arcade.velocityFromAngle(elements.player.angle, settings.ship_speed, elements.player.body.velocity);
-					}
-					if (game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)) {
-						methods.fireBullet();
-					}
+					elements.player.body.angularVelocity = -200;
+				}
+				if (cursors.right.isDown) {
+					elements.player.body.angularVelocity = 200;
+				}
+				if (cursors.up.isDown) {
+					game.physics.arcade.velocityFromAngle(elements.player.angle, settings.ship_speed, elements.player.body.velocity);
+				}
+				if (game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)) {
+					methods.fireBullet();
 				}
 
 				if (game.time.now > projectiles.firingTimer) {
@@ -270,7 +269,7 @@ var map, layer, cursors, originalSettings,
 					// randomly select one of them
 					var shooter=elements.livingEnemies[random];
 					// And fire the bullet from this enemy
-					projectiles.enemyBullet.reset(shooter.body.x, shooter.body.y);
+					projectiles.enemyBullet.reset(shooter.body.x + shooter.body.width/2, shooter.body.y + shooter.body.height/2);
 
 					game.physics.arcade.moveToObject(projectiles.enemyBullet, elements.player, 120);
 					projectiles.firingTimer = game.time.now + settings.enemy_fire_speed();

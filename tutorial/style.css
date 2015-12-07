@@ -1,0 +1,54 @@
+body, html {margin: 0; padding: 0; background: #fff; color: #333; font-family: Helvetica, Arial, sans-serif; font-size: 15px; line-height: 20px; }
+a { color: #6D38B1; border-bottom: 1px solid #6D38B1; text-decoration: none; }
+a:hover { color: #B13838; border-bottom: 1px solid #B13838; }
+h1 { line-height: 40px; font-size: 30px; text-align: center; }
+h2 { line-height: 30px; font-size: 20px; padding: 0; margin: 20px 0 0 -20px; }
+h1, h2 { color: #000; font-family: "Ubuntu", sans-serif; }
+#container { margin: 25px auto; width: 600px;  background-size: 213px 59px; }
+#header { text-align: center; }
+#header img { display: inline-block; width: 200px; vertical-align: middle; }
+#content img { height: 80px; margin-right: 10px; margin-bottom: 10px; border: 2px solid #043a6b; padding: 2px; }
+#content img:hover { border: 2px solid #fff; }
+pre { background: rgba(0, 0, 0, 0.05); padding: 10px; color: #012647; font-size: 12px; line-height: 16px; margin: 10px; white-space: pre-wrap; cursor: text; }
+
+
+.question { background: rgba(0,0,0,0.05); padding: 10px; margin: 5px 0; }
+
+
+body {
+  padding-bottom: 40px;
+}
+
+em {
+	font-weight: 700;
+	font-style: normal;
+}
+
+code { border-bottom: 2px solid #eee; }
+
+.pound {
+	font-size: .8em;
+}
+
+
+li ol li {
+	list-style-type: lower-alpha;
+}
+
+.steps li {
+    border-left: 3px solid #eee;
+    padding: 0 10px;
+    margin: 15px 0 0 0;
+    cursor: pointer;
+}
+
+.steps li.done {
+    background: #efefef;
+    border-top: 1px solid #efefef;
+}
+img.screenshot {
+    margin: 40px 0;
+    display: block;
+    width: 100%;
+    background: #eee;
+}

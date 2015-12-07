@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>CodeCreate</title>
+	<link rel="stylesheet" href="style.css" type="text/css">
+
+</head>
+<body>
+	<div id="container">
+        <div id="header">
+            <img src='./assets/codecreate.png' />
+            <img src='./assets/lhl.png' />
+        </div>
+		<div>
+			<h1>Hour of Code<br />Programming Challenges</h1>
+			<p>
+				In this project, you'll be modifying the source code of a basic browser game, to change the game's rules.
+			</p>
+			<p>
+                Here are some challenges to solve. You will find hints to help you along.
+            </p>
+		</div>
+
+		<div>
+			<h2>Part 1 - Change some settings</h2>
+			<ol class='steps'>
+				<li>
+					Open up the <code>codecreate</code> folder within Brackets (File &rarr; Open Folder). Once you have it open, you will see some files and folders. We'll be starting out with the <code>hour_of_code.js</code> file, inside the <code>js</code> folder.
+				</li>
+                <img class='screenshot' src='./screenshots/01.png' />
+
+                <li>
+                    <p>To launch the game, click the lightning button on the top right corner in Brackets. You should now be able to play the game.</p>
+                </li>
+
+                <li>
+                    Now let's get back to the <code>hour_of_code.js</code> file. Notice there are some settings you can change here. For example, towards the bottom, there is a line that says: <pre>ship_speed: 200,</pre> Try changing the number to a bigger number, such as 500, and <strong>save the file</strong>. Now if you go back to your game, you should see that your ship goes faster.
+                </li>
+				<li>
+					If you want to add more enemies to the game, find the line that says: <pre>number_of_enemies: 6,</pre> and change it to something higher, like 12, which is the maximum.
+				</li>
+				<li>
+					Now let's do something a bit more involved. Let's make the enemies shoot at random times. To do this, find the function called <code>enemy_fire_speed</code>. Inside the function, between the curly braces, you'll see a line that says: <pre>return 2000;</pre> Try changing it to <pre>Math.random() * 2000;</pre> and save the file. You should now notice the enemies firing more randomly.<br />
+                    <code>Math.random()</code> is a function that represents a random number between zero and one, and the star <code>"*"</code> is the "times" sign.
+				</li>
+            </ol>
+		</div>
+		<div>
+            <h2>Part 2 - Change some images</h2>
+			<ol class='steps'>
+				<li>
+					
+				</li>
+            </ol>
+		</div>
+		<div>
+            <h2>Part 3 - Change some rules!</h2>
+			<ol class='steps'>
+				<li>
+					Now let's make our ship invincible.
+				</li>
+            </ol>
+		</div>
+
+	</div>
+
+</body>
+</html>
