@@ -13,7 +13,7 @@ var settings = {
     //the two // on the next line and put them on the line above, at the
     //beginning of the line.	
 
-    //return game.rnd.integerInRange(50, 2000);
+    //return Math.floor(Math.random() * (2000 - 50)) + 50;
   },
   //This shows the lanterns in the background of the game
   show_lights: false,
