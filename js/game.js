@@ -65,14 +65,27 @@ var map, layer, cursors, originalSettings,
 			},	
 			preload: function() {
 				game.load.tilemap('map', 'assets/hoc.json', null, Phaser.Tilemap.TILED_JSON);
-				game.load.image('enemyBullet', 'images/enemy-bullet.png');
-				game.load.spritesheet('invader', 'images/invader32x32x4.png', 32, 32);
+                
 				game.load.spritesheet('kaboom', 'images/explode.png', 128, 128);
 				game.load.image('ground_1x1', 'images/ground_1x1.png');
 				game.load.image('walls_1x2', 'images/walls_1x2.png');
 				game.load.image('tiles2', 'images/tiles2.png');
+                
+                // this is your spaceship
+				game.load.image('spaceship', 'images/ship2.png');
+                // you could instead change it to something else, for example:
+                // game.load.image('spaceship', 'images/horse.png');
+                
+				game.load.spritesheet('invader', 'images/invader32x32x4.png', 32, 32);
+                // this is the enemy. you can change it to something else:
+                //game.load.image('invader', 'images/emoji/460.png');
+                
+                // this is the bullet your ship fires
 				game.load.image('bullet', 'images/bullets.png');
-				game.load.image('phaser', 'images/ship'+settings.ship+'.png');
+                
+                // this is the bullet that enemies fire
+				game.load.image('enemyBullet', 'images/enemy-bullet.png');
+                
 				game.load.image('wormhole', 'images/wormhole.png');
 			},
 			fireBullet: function() {
@@ -84,7 +97,7 @@ var map, layer, cursors, originalSettings,
 						projectiles.bullet.reset(elements.player.body.x + 2, elements.player.body.y + 4);
 						projectiles.bullet.lifespan = 2000;
 						projectiles.bullet.rotation = elements.player.rotation;
-						game.physics.arcade.velocityFromRotation(elements.player.rotation, 400, projectiles.bullet.body.velocity);
+						game.physics.arcade.velocityFromRotation(elements.player.rotation, settings.bullet_speed, projectiles.bullet.body.velocity);
 						projectiles.bulletTime = game.time.now + settings.fire_speed;
 					}
 				}
@@ -140,7 +153,10 @@ var map, layer, cursors, originalSettings,
 					var layer3 = map.createLayer('Tile Layer 3');
 				}
 
-				elements.player = game.add.sprite(60, 260, 'phaser');
+				elements.player = game.add.sprite(60, 260, 'spaceship');
+                elements.player.width = settings.spaceship_width;
+                elements.player.height = settings.spaceship_height;
+                
 				elements.player.anchor.set(0.5);
 				game.physics.enable(elements.player);
 
@@ -181,17 +197,16 @@ var map, layer, cursors, originalSettings,
 				elements.player.body.velocity.y = 0;
 				elements.player.body.angularVelocity = 0;
 				if (cursors.left.isDown) {
-						elements.player.body.angularVelocity = -200;
-				} else {
-					if (cursors.right.isDown) {
-						elements.player.body.angularVelocity = 200;
-					}
-					if (cursors.up.isDown) {
-							game.physics.arcade.velocityFromAngle(elements.player.angle, settings.ship_speed, elements.player.body.velocity);
-					}
-					if (game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)) {
-						methods.fireBullet();
-					}
+					elements.player.body.angularVelocity = -200;
+				}
+				if (cursors.right.isDown) {
+					elements.player.body.angularVelocity = 200;
+				}
+				if (cursors.up.isDown) {
+					game.physics.arcade.velocityFromAngle(elements.player.angle, settings.ship_speed, elements.player.body.velocity);
+				}
+				if (game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)) {
+					methods.fireBullet();
 				}
 
 				if (game.time.now > projectiles.firingTimer) {
@@ -209,7 +224,7 @@ var map, layer, cursors, originalSettings,
 				game.physics.arcade.collide(elements.player, elements.aliens, methods.playerAlienCollision, null, this);
 				game.physics.arcade.overlap(elements.holes, elements.player, methods.teleport, null, this);
 			},
-			asplode: function(which) {
+			explode: function(which) {
 				// Create an explosion :)
 				var explosion = elements.explosions.getFirstExists(false);
 				explosion.reset(which.body.x, which.body.y);
@@ -220,8 +235,8 @@ var map, layer, cursors, originalSettings,
 				player.kill();
 
 				// Create some explosions :)
-				methods.asplode(alien);
-				methods.asplode(player);
+				methods.explode(alien);
+				methods.explode(player);
 
 				//Restart
 				methods.restart(true);
@@ -234,7 +249,7 @@ var map, layer, cursors, originalSettings,
 				bullet.kill();
 				alien.kill();
 
-				methods.asplode(alien);
+				methods.explode(alien);
 				elements.score++;
 				elements.scoreText.text = elements.scoreString + elements.score;
 
@@ -249,7 +264,7 @@ var map, layer, cursors, originalSettings,
 				bullet.kill();
 
 				//  And create an explosion :)
-				methods.asplode(player);
+				methods.explode(player);
 				methods.restart(true);
 			},
 			enemyFires: function() {
@@ -270,7 +285,7 @@ var map, layer, cursors, originalSettings,
 					// randomly select one of them
 					var shooter=elements.livingEnemies[random];
 					// And fire the bullet from this enemy
-					projectiles.enemyBullet.reset(shooter.body.x, shooter.body.y);
+					projectiles.enemyBullet.reset(shooter.body.x + shooter.body.width/2, shooter.body.y + shooter.body.height/2);
 
 					game.physics.arcade.moveToObject(projectiles.enemyBullet, elements.player, 120);
 					projectiles.firingTimer = game.time.now + settings.enemy_fire_speed();
@@ -313,10 +328,16 @@ var map, layer, cursors, originalSettings,
 					var y = positions[i][1];	
 					var alien = elements.aliens.create(x, y, 'invader');
 					alien.anchor.setTo(0.5, 0.5);
-					alien.animations.add('fly', [ 0, 1, 2, 3 ], 20, true);
+                    try {
+					   alien.animations.add('fly', [ 0, 1, 2, 3 ], 20, true);
+                    } catch(e) {}
+                    
 					alien.play('fly');
 					alien.body.moves = false;
 					game.add.tween(alien).to( { x: alien.x + 25 }, 2000, Phaser.Easing.Linear.None, true, 0, 1000, true);
+                    
+                    alien.width = settings.spaceship_width;
+                    alien.height = settings.spaceship_height;
 				}
 			},
 			enableWormhole: function(x, y) {

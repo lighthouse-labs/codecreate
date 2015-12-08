@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>CodeCreate</title>
+	<link rel="stylesheet" href="style.css" type="text/css">
+
+</head>
+<body>
+	<div id="container">
+        <div id="header">
+            <img class="logo logo1" src='./assets/lhl.png' />
+            <img class="logo logo2" src='./assets/codecreate.png' />
+        </div>
+		<div>
+			<h1>Codecreate<br /><span>Wormhole Programming Challenges</span></h1>
+			<p>
+				In this project, you'll be changing the rules of a basic game by modifying its source code.
+			</p>
+			<p>
+                Here are some challenges to solve. You will find hints to help you along.
+            </p>
+		</div>
+
+		<div>
+			<h2>Part 1 - Change some settings</h2>
+			<ol class='steps'>
+                <li>
+                    Open the program called Brackets (most likely on your desktop)
+                </li>
+				<li>
+					Open up the <code>codecreate</code> folder within Brackets (File &rarr; Open Folder). Once you have it open, you will see some files and folders. We'll be starting out with the <code>hour_of_code.js</code> file, inside the <code>js</code> folder.
+				</li>
+                <img class='screenshot' src='./screenshots/01.png' />
+
+                <li>
+                    <p>To launch the game, click the lightning button on the top right corner in Brackets. You should now be able to play the game.</p>
+                </li>
+                <img class='screenshot' src='./screenshots/02.png' />
+
+                <li>
+                    <p>
+                        <strong>Remember: lines that start with "//" (two slashes) are ignored in the program!</strong>
+                        They are called "comments", and are left as notes for others to read.
+                    </p>
+
+                    Now let's get back to the <code>hour_of_code.js</code> file. Notice there are some settings you can change here. For example, towards the bottom, there is a line that says: <pre>ship_speed: 200,</pre> Try changing the number to a bigger number, such as 500, and <strong>save the file</strong>. Now if you go back to your game, you should see that your ship goes faster.
+                </li>
+				<li>
+					If you want to add more enemies to the game, find the line that says: <pre>number_of_enemies: 6,</pre> and change it to something higher, like 12, which is the maximum.
+				</li>
+                <li>
+                    Feel free to try changing some other values. For example, you can try making your spaceship bigger.
+                </li>
+				<li>
+					Now let's do something a bit more involved. Let's make the enemies shoot at random times. To do this, find the function called <code>enemy_fire_speed</code>. Inside the function, between the curly braces, you'll see a line that says: <pre>return 2000;</pre> Try changing it to <pre>Math.random() * 2000;</pre> and save the file. You should now notice the enemies firing more randomly.<br />
+                    <code>Math.random()</code> is a function that represents a random number between zero and one, and the star <code>"*"</code> is the multiplication sign.
+				</li>
+            </ol>
+		</div>
+		<div>
+            <h2>Part 2 - Change some images</h2>
+			<ol class='steps'>
+				<li>
+					Let's start changing how some things look in the game, such as our spaceship. To do this, we will need to load up the file called <code>game.js</code> in Brackets.
+				</li>
+                <li>
+                    Look at line 75 in <code>game.js</code>.
+                    <pre>
+// this is your spaceship
+game.load.image('spaceship', 'images/ship2.png');</pre>
+                    <p>
+                        Notice that a file is being loaded as the picture for the spaceship. We can change this to a different image file.
+                    </p>
+                    <p>
+                        Try changing it to a horse:
+                        <pre>game.load.image('spaceship', 'images/horse.png');</pre>
+                        This works because there is a file called <code>horse.png</code> inside the <code>images</code> folder.
+                    </p>
+                </li>
+                <li>
+                    You may open up the <code>images</code> folder and find other pictures that you might like to use!<br />
+                    You can also do the same for the enemies.
+                    <p>
+                        <i>Hint: Look at line 79 and 81. Try commenting line 79 and uncommenting 81, so it looks like:</i>
+                        <pre>game.load.spritesheet('invader', 'images/invader32x32x4.png', 32, 32);
+// this is the enemy. you can change it to something else:
+//game.load.image('invader', 'images/emoji/460.png');</pre>
+                    <p>
+                </li>
+            </ol>
+		</div>
+		<div>
+            <h2 class='pagebreak'>Part 3 - Change some rules!</h2>
+			<ol class='steps'>
+				<li>
+					Now let's make our ship invincible.
+                    <p>
+                        In <code>game.js</code>, go to line 267.
+                        <img class='screenshot' src='./screenshots/03.png' />
+                        You can try getting rid of the lines that say: <pre>methods.explode(player);
+methods.restart(true);</pre>by either deleting them, or adding "<code>//</code>" at the start of the two lines.
+                        <p>
+                            You should now notice that nothing happens when an enemy bullet hits your ship.<br />This is because the code you just removed was responsible of making an explosion, and restarting the game.
+                        </p>
+                    </p>
+				</li>
+                <li>Make the enemies explode when your ship hits them
+                <p>Find line 235, where you should see the <code>playerAlienCollision</code> method.
+                    <img class='screenshot' src='./screenshots/04.png' />
+                    Here, there are two separate lines we'll need to remove. First is to prevent our player from dying:
+                    <pre>// player.kill();</pre>
+                    And the second is to prevent the game from restarting:
+                    <pre>// methods.restart(true);</pre>
+                    With these two lines disabled (or removed), now it should just be the enemy that explodes when you touch them!
+                </p>
+                </li>
+            </ol>
+            <center style="margin-top: 50px;"><em>
+                Congrats! You have completed our programming challenge.<br />
+                The rest is for you to explore. Keep coding!
+            </em></center>
+		</div>
+
+	</div>
+
+</body>
+</html>
