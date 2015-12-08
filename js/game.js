@@ -65,14 +65,27 @@ var map, layer, cursors, originalSettings,
 			},	
 			preload: function() {
 				game.load.tilemap('map', 'assets/hoc.json', null, Phaser.Tilemap.TILED_JSON);
-				game.load.image('enemyBullet', 'images/enemy-bullet.png');
-				game.load.spritesheet('invader', 'images/invader32x32x4.png', 32, 32);
+                
 				game.load.spritesheet('kaboom', 'images/explode.png', 128, 128);
 				game.load.image('ground_1x1', 'images/ground_1x1.png');
 				game.load.image('walls_1x2', 'images/walls_1x2.png');
 				game.load.image('tiles2', 'images/tiles2.png');
+                
+                // this is your spaceship
+				game.load.image('spaceship', 'images/ship2.png');
+                // you could instead change it to something else, for example:
+                // game.load.image('spaceship', 'images/horse.png');
+                
+				game.load.spritesheet('invader', 'images/invader32x32x4.png', 32, 32);
+                // this is the enemy. you can change it to something else:
+                //game.load.image('invader', 'images/emoji/460.png');
+                
+                // this is the bullet your ship fires
 				game.load.image('bullet', 'images/bullets.png');
-				game.load.image('phaser', 'images/ship'+settings.ship+'.png');
+                
+                // this is the bullet that enemies fire
+				game.load.image('enemyBullet', 'images/enemy-bullet.png');
+                
 				game.load.image('wormhole', 'images/wormhole.png');
 			},
 			fireBullet: function() {
@@ -140,7 +153,10 @@ var map, layer, cursors, originalSettings,
 					var layer3 = map.createLayer('Tile Layer 3');
 				}
 
-				elements.player = game.add.sprite(60, 260, 'phaser');
+				elements.player = game.add.sprite(60, 260, 'spaceship');
+                elements.player.width = settings.spaceship_width;
+                elements.player.height = settings.spaceship_height;
+                
 				elements.player.anchor.set(0.5);
 				game.physics.enable(elements.player);
 
@@ -312,10 +328,16 @@ var map, layer, cursors, originalSettings,
 					var y = positions[i][1];	
 					var alien = elements.aliens.create(x, y, 'invader');
 					alien.anchor.setTo(0.5, 0.5);
-					alien.animations.add('fly', [ 0, 1, 2, 3 ], 20, true);
+                    try {
+					   alien.animations.add('fly', [ 0, 1, 2, 3 ], 20, true);
+                    } catch(e) {}
+                    
 					alien.play('fly');
 					alien.body.moves = false;
 					game.add.tween(alien).to( { x: alien.x + 25 }, 2000, Phaser.Easing.Linear.None, true, 0, 1000, true);
+                    
+                    alien.width = settings.spaceship_width;
+                    alien.height = settings.spaceship_height;
 				}
 			},
 			enableWormhole: function(x, y) {

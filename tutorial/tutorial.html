@@ -25,6 +25,9 @@
 		<div>
 			<h2>Part 1 - Change some settings</h2>
 			<ol class='steps'>
+                <li>
+                    Open the program called Brackets (most likely on your desktop)
+                </li>
 				<li>
 					Open up the <code>codecreate</code> folder within Brackets (File &rarr; Open Folder). Once you have it open, you will see some files and folders. We'll be starting out with the <code>hour_of_code.js</code> file, inside the <code>js</code> folder.
 				</li>
@@ -33,13 +36,22 @@
                 <li>
                     <p>To launch the game, click the lightning button on the top right corner in Brackets. You should now be able to play the game.</p>
                 </li>
+                <img class='screenshot' src='./screenshots/02.png' />
 
                 <li>
+                    <p>
+                        <strong>Remember: lines that start with "//" (two slashes) are ignored in the program!</strong>
+                        They are called "comments", and are left as notes for others to read.
+                    </p>
+
                     Now let's get back to the <code>hour_of_code.js</code> file. Notice there are some settings you can change here. For example, towards the bottom, there is a line that says: <pre>ship_speed: 200,</pre> Try changing the number to a bigger number, such as 500, and <strong>save the file</strong>. Now if you go back to your game, you should see that your ship goes faster.
                 </li>
 				<li>
 					If you want to add more enemies to the game, find the line that says: <pre>number_of_enemies: 6,</pre> and change it to something higher, like 12, which is the maximum.
 				</li>
+                <li>
+                    Feel free to try changing some other values. For example, you can try making your spaceship bigger.
+                </li>
 				<li>
 					Now let's do something a bit more involved. Let's make the enemies shoot at random times. To do this, find the function called <code>enemy_fire_speed</code>. Inside the function, between the curly braces, you'll see a line that says: <pre>return 2000;</pre> Try changing it to <pre>Math.random() * 2000;</pre> and save the file. You should now notice the enemies firing more randomly.<br />
                     <code>Math.random()</code> is a function that represents a random number between zero and one, and the star <code>"*"</code> is the "times" sign.
@@ -50,8 +62,26 @@
             <h2>Part 2 - Change some images</h2>
 			<ol class='steps'>
 				<li>
-					
+					Let's start changing how some things look in the game, such as our spaceship. To do this, we will need to load up the file called <code>game.js</code> in Brackets.
 				</li>
+                <li>
+                    Look at line 75 in <code>game.js</code>.
+                    <pre>
+// this is your spaceship
+game.load.image('spaceship', 'images/ship2.png');</pre>
+                    <p>
+                        Notice that a file is being loaded as the picture for the spaceship. We can change this to a different image file.
+                    </p>
+                    <p>
+                        Try changing it to a horse:
+                        <pre>game.load.image('spaceship', 'images/horse.png');</pre>
+                        This works because there is a file called <code>horse.png</code> inside the <code>images</code> folder.
+                    </p>
+                </li>
+                <li>
+                    You may open up the <code>images</code> folder and find other pictures that you might like to use!<br />
+                    You can also do the same for the enemies.
+                </li>
             </ol>
 		</div>
 		<div>
