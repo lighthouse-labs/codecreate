@@ -1,14 +1,17 @@
 body, html { margin: 0; padding: 0; background: #fff; color: #333; font-family: Arial; font-size: 14px; line-height: 17px; }
 a { color: #6D38B1; border-bottom: 1px solid #6D38B1; text-decoration: none; }
 a:hover { color: #B13838; border-bottom: 1px solid #B13838; }
-h1 { line-height: 35px; font-size: 25px; text-align: center; }
+h1 { line-height: 25px; font-size: 25px; text-align: center; }
+h1 span { font-size: 20px; color: #555; }
 h2 { line-height: 25px; font-size: 18px; padding: 0; margin: 20px 0 0 -20px; }
 h1, h2 { color: #000; }
 #container { margin: 25px auto; width: 600px;  background-size: 213px 59px; }
-#header { text-align: center; }
-#header img { display: inline-block; width: 200px; vertical-align: middle; }
-#content img { height: 80px; margin-right: 10px; margin-bottom: 10px; border: 2px solid #043a6b; padding: 2px; }
-#content img:hover { border: 2px solid #fff; }
+
+#header { width: 100%; position: relative; height: 100px; }
+#header .logo { position: absolute; max-width: 250px; max-height: 80px; }
+#header .logo1 { top: 0; left: 0; }
+#header .logo2 { top: 0; right: 0; }
+
 pre { background: rgba(0, 0, 0, 0.05); padding: 10px; color: #012647; font-size: 12px; line-height: 16px; margin: 10px; white-space: pre-wrap; cursor: text; }
 
 

@@ -9,11 +9,11 @@
 <body>
 	<div id="container">
         <div id="header">
-            <img src='./assets/codecreate.png' />
-            <img src='./assets/lhl.png' />
+            <img class="logo logo1" src='./assets/lhl.png' />
+            <img class="logo logo2" src='./assets/codecreate.png' />
         </div>
 		<div>
-			<h1>Hour of Code<br />Programming Challenges</h1>
+			<h1>Codecreate<br /><span>Wormhole Programming Challenges</span></h1>
 			<p>
 				In this project, you'll be changing the rules of a basic game by modifying its source code.
 			</p>
@@ -54,7 +54,7 @@
                 </li>
 				<li>
 					Now let's do something a bit more involved. Let's make the enemies shoot at random times. To do this, find the function called <code>enemy_fire_speed</code>. Inside the function, between the curly braces, you'll see a line that says: <pre>return 2000;</pre> Try changing it to <pre>Math.random() * 2000;</pre> and save the file. You should now notice the enemies firing more randomly.<br />
-                    <code>Math.random()</code> is a function that represents a random number between zero and one, and the star <code>"*"</code> is the "times" sign.
+                    <code>Math.random()</code> is a function that represents a random number between zero and one, and the star <code>"*"</code> is the multiplication sign.
 				</li>
             </ol>
 		</div>
@@ -81,6 +81,12 @@ game.load.image('spaceship', 'images/ship2.png');</pre>
                 <li>
                     You may open up the <code>images</code> folder and find other pictures that you might like to use!<br />
                     You can also do the same for the enemies.
+                    <p>
+                        <i>Hint: Look at line 79 and 81. Try commenting line 79 and uncommenting 81, so it looks like:</i>
+                        <pre>game.load.spritesheet('invader', 'images/invader32x32x4.png', 32, 32);
+// this is the enemy. you can change it to something else:
+//game.load.image('invader', 'images/emoji/460.png');</pre>
+                    <p>
                 </li>
             </ol>
 		</div>
