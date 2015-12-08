@@ -15,7 +15,7 @@
 		<div>
 			<h1>Hour of Code<br />Programming Challenges</h1>
 			<p>
-				In this project, you'll be modifying the source code of a basic browser game, to change the game's rules.
+				In this project, you'll be changing the rules of a basic game by modifying its source code.
 			</p>
 			<p>
                 Here are some challenges to solve. You will find hints to help you along.
@@ -85,12 +85,35 @@ game.load.image('spaceship', 'images/ship2.png');</pre>
             </ol>
 		</div>
 		<div>
-            <h2>Part 3 - Change some rules!</h2>
+            <h2 class='pagebreak'>Part 3 - Change some rules!</h2>
 			<ol class='steps'>
 				<li>
 					Now let's make our ship invincible.
+                    <p>
+                        In <code>game.js</code>, go to line 267.
+                        <img class='screenshot' src='./screenshots/03.png' />
+                        You can try getting rid of the lines that say: <pre>methods.explode(player);
+methods.restart(true);</pre>by either deleting them, or adding "<code>//</code>" at the start of the two lines.
+                        <p>
+                            You should now notice that nothing happens when an enemy bullet hits your ship.<br />This is because the code you just removed was responsible of making an explosion, and restarting the game.
+                        </p>
+                    </p>
 				</li>
+                <li>Make the enemies explode when your ship hits them
+                <p>Find line 235, where you should see the <code>playerAlienCollision</code> method.
+                    <img class='screenshot' src='./screenshots/04.png' />
+                    Here, there are two separate lines we'll need to remove. First is to prevent our player from dying:
+                    <pre>// player.kill();</pre>
+                    And the second is to prevent the game from restarting:
+                    <pre>// methods.restart(true);</pre>
+                    With these two lines disabled (or removed), now it should just be the enemy that explodes when you touch them!
+                </p>
+                </li>
             </ol>
+            <center style="margin-top: 50px;"><em>
+                Congrats! You have completed our programming challenge.<br />
+                The rest is for you to explore. Keep coding!
+            </em></center>
 		</div>
 
 	</div>

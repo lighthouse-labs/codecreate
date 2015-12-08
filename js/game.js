@@ -224,7 +224,7 @@ var map, layer, cursors, originalSettings,
 				game.physics.arcade.collide(elements.player, elements.aliens, methods.playerAlienCollision, null, this);
 				game.physics.arcade.overlap(elements.holes, elements.player, methods.teleport, null, this);
 			},
-			asplode: function(which) {
+			explode: function(which) {
 				// Create an explosion :)
 				var explosion = elements.explosions.getFirstExists(false);
 				explosion.reset(which.body.x, which.body.y);
@@ -235,8 +235,8 @@ var map, layer, cursors, originalSettings,
 				player.kill();
 
 				// Create some explosions :)
-				methods.asplode(alien);
-				methods.asplode(player);
+				methods.explode(alien);
+				methods.explode(player);
 
 				//Restart
 				methods.restart(true);
@@ -249,7 +249,7 @@ var map, layer, cursors, originalSettings,
 				bullet.kill();
 				alien.kill();
 
-				methods.asplode(alien);
+				methods.explode(alien);
 				elements.score++;
 				elements.scoreText.text = elements.scoreString + elements.score;
 
@@ -264,7 +264,7 @@ var map, layer, cursors, originalSettings,
 				bullet.kill();
 
 				//  And create an explosion :)
-				methods.asplode(player);
+				methods.explode(player);
 				methods.restart(true);
 			},
 			enemyFires: function() {

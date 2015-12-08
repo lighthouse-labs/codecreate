@@ -16,7 +16,7 @@ var settings = {
 	// return Math.random() * 2000;
   },
   //This shows the lanterns in the background of the game
-  show_lights: true,
+  show_lights: false,
 
   //How fast the ship goes. Higher numbers here mean higher speeds. 
   //Be careful! (Default: 200)

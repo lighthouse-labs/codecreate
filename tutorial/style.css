@@ -1,9 +1,9 @@
-body, html {margin: 0; padding: 0; background: #fff; color: #333; font-family: Helvetica, Arial, sans-serif; font-size: 15px; line-height: 20px; }
+body, html { margin: 0; padding: 0; background: #fff; color: #333; font-family: Arial; font-size: 14px; line-height: 17px; }
 a { color: #6D38B1; border-bottom: 1px solid #6D38B1; text-decoration: none; }
 a:hover { color: #B13838; border-bottom: 1px solid #B13838; }
-h1 { line-height: 40px; font-size: 30px; text-align: center; }
-h2 { line-height: 30px; font-size: 20px; padding: 0; margin: 20px 0 0 -20px; }
-h1, h2 { color: #000; font-family: "Ubuntu", sans-serif; }
+h1 { line-height: 35px; font-size: 25px; text-align: center; }
+h2 { line-height: 25px; font-size: 18px; padding: 0; margin: 20px 0 0 -20px; }
+h1, h2 { color: #000; }
 #container { margin: 25px auto; width: 600px;  background-size: 213px 59px; }
 #header { text-align: center; }
 #header img { display: inline-block; width: 200px; vertical-align: middle; }
@@ -47,8 +47,13 @@ li ol li {
     border-top: 1px solid #efefef;
 }
 img.screenshot {
-    margin: 30px 0;
+    margin: 10px 0 30px 0;
     display: block;
     width: 100%;
     background: #eee;
+}
+
+@media print {
+	li { page-break-inside:avoid; }
+    .pagebreak { page-break-before: always; }
 }
