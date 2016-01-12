@@ -25,9 +25,9 @@ var map, layer, cursors, originalSettings,
 		},
 		methods = {
 			validateSettings: function() {
-				if (settings.number_of_enemies > 12) {
-					settings.number_of_enemies = 12;
-				}
+//				if (settings.number_of_enemies > 12) {
+//					settings.number_of_enemies = 12;
+//				}
 
 				if (settings.number_of_enemies < 0) {
 					settings.number_of_enemies = 0;
@@ -317,7 +317,7 @@ var map, layer, cursors, originalSettings,
 				elements.player.body.y = 260;
 			},
 			createAliens: function() {
-				var positions = [[185, 170], [185, 275], [260, 400], [550, 180], [750, 475], [950, 235], [1150, 80], [1175, 375], [1175, 475], [1370, 250], [1375, 425], [1500, 95]];
+				var positions = [[185, 170], [350, 170], [185, 275], [260, 400], [550, 180], [750, 475], [950, 235], [1150, 80], [1175, 375], [1175, 475], [1370, 250], [1375, 425], [1500, 95]];
 				//  The baddies!
 				elements.aliens = game.add.group();
 				elements.aliens.enableBody = true;
