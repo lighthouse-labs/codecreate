@@ -25,14 +25,6 @@ var map, layer, cursors, originalSettings,
 		},
 		methods = {
 			validateSettings: function() {
-//				if (settings.number_of_enemies > 12) {
-//					settings.number_of_enemies = 12;
-//				}
-
-				if (settings.number_of_enemies < 0) {
-					settings.number_of_enemies = 0;
-				}
-
 				if (settings.enemy_fire_speed() <= 0) {
 					settings.enemy_fire_speed = function() { return 20; };
 				}	
@@ -154,8 +146,8 @@ var map, layer, cursors, originalSettings,
 				}
 
 				elements.player = game.add.sprite(60, 260, 'spaceship');
-                elements.player.width = settings.spaceship_width;
-                elements.player.height = settings.spaceship_height;
+				elements.player.width = settings.spaceship_width;
+				elements.player.height = settings.spaceship_height;
                 
 				elements.player.anchor.set(0.5);
 				game.physics.enable(elements.player);
@@ -317,27 +309,28 @@ var map, layer, cursors, originalSettings,
 				elements.player.body.y = 260;
 			},
 			createAliens: function() {
-				var positions = [[185, 170], [350, 170], [185, 275], [260, 400], [550, 180], [750, 475], [950, 235], [1150, 80], [1175, 375], [1175, 475], [1370, 250], [1375, 425], [1500, 95]];
 				//  The baddies!
 				elements.aliens = game.add.group();
 				elements.aliens.enableBody = true;
 				elements.aliens.physicsBodyType = Phaser.Physics.ARCADE;
 
-				for (var i = 0; i < settings.number_of_enemies; i++) {
-					var x = positions[i][0];
-					var y = positions[i][1];	
+				for (var i = 0; i < settings.positions.length; i++) {
+					var x = settings.positions[i][0];
+					var y = settings.positions[i][1];	
 					var alien = elements.aliens.create(x, y, 'invader');
 					alien.anchor.setTo(0.5, 0.5);
-                    try {
-					   alien.animations.add('fly', [ 0, 1, 2, 3 ], 20, true);
-                    } catch(e) {}
+					try {
+					 alien.animations.add('fly', [ 0, 1, 2, 3 ], 20, true);
+					} catch(e) {}
                     
 					alien.play('fly');
 					alien.body.moves = false;
 					game.add.tween(alien).to( { x: alien.x + 25 }, 2000, Phaser.Easing.Linear.None, true, 0, 1000, true);
                     
-                    alien.width = settings.spaceship_width;
-                    alien.height = settings.spaceship_height;
+					//THIS IS A BUG!! Look at the tech_summit.js file and
+					//figure out what value SHOULD go here.
+					alien.width = settings.spaceship_width;
+					alien.height = settings.spaceship_height;
 				}
 			},
 			enableWormhole: function(x, y) {
